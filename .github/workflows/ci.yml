@@ -17,8 +17,10 @@ on:
       - '.vscode/'
       - 'appcast.xml'
 
+# 并发策略
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  # 如果有新的运行实例，取消正在进行的实例
   cancel-in-progress: true
 
 jobs:
